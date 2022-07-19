@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> with TickerProviderStateMixin {
-  late Animation<double> catAnimation;
+  late Animation<double> catAnimation; // animation object
   late AnimationController catController;
 
   @override
@@ -27,12 +27,16 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Aminations')),
+      appBar: AppBar(title: const Text('Animations ')),
       body: buildAnimation(),
     );
   }
 
   Widget buildAnimation() {
-    return const Cat();
+    return AnimatedBuilder(
+      animation: catAnimation,
+      builder: (BuildContext context, child) {},
+      child: const Cat(),
+    );
   }
 }
