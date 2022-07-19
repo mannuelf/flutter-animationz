@@ -21,20 +21,23 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
 
     catController =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    catAnimation = Tween(begin: 0.0, end: 300.0)
+    catAnimation = Tween(begin: 0.0, end: 100.0)
         .animate(CurvedAnimation(parent: catController, curve: Curves.easeIn));
-    catController.forward();
   }
 
-  tapBox() {}
+  tapBox() {
+    print('Tapping');
+    // plays animation on tap
+    catController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Animations ⛱')),
       body: GestureDetector(
-        child: buildAnimation(),
         onTap: tapBox,
+        child: buildAnimation(),
       ),
     );
   }
