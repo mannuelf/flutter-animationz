@@ -6,10 +6,21 @@ import '../widgets/cat.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
+  @override
   HomeState createState() => HomeState();
 }
 
 class HomeState extends State<Home> {
+  Animation<double>? catAnimation;
+  AnimationController? catController;
+
+  @override
+  initState() {
+    // Life-cycle method
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
