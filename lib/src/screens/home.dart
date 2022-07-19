@@ -26,9 +26,14 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   tapBox() {
-    print('Tapping');
     // plays animation on tap
-    catController.forward();
+    if (catController.status == AnimationStatus.completed) {
+      // animation completed
+      catController.reverse();
+    } else if (catController.status == AnimationStatus.dismissed) {
+      // animation stopped
+      catController.forward();
+    }
   }
 
   @override
