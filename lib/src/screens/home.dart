@@ -63,4 +63,12 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
         child: const Cat() // create cat one time, expensive so do it once,
         );
   }
+
+  Widget buildBox() {
+    return Container(
+      height: 200.0,
+      width: 200.0,
+      color: Colors.brown,
+    );
+  }
 }
