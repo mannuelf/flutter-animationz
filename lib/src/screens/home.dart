@@ -26,11 +26,16 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     catController.forward();
   }
 
+  tapBox() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Animations ⛱')),
-      body: buildAnimation(),
+      body: GestureDetector(
+        child: buildAnimation(),
+        onTap: tapBox,
+      ),
     );
   }
 
