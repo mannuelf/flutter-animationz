@@ -17,26 +17,33 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   initState() {
     // Life-cycle method
+    super.initState();
+
     catController =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    catAnimation = Tween(begin: 0.0, end: 100.0)
+    catAnimation = Tween(begin: 0.0, end: 300.0)
         .animate(CurvedAnimation(parent: catController, curve: Curves.easeIn));
-    super.initState();
+    catController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Animations ')),
+      appBar: AppBar(title: const Text('Animations ⛱')),
       body: buildAnimation(),
     );
   }
 
   Widget buildAnimation() {
     return AnimatedBuilder(
-      animation: catAnimation,
-      builder: (BuildContext context, child) {},
-      child: const Cat(),
-    );
+        animation: catAnimation,
+        builder: (BuildContext context, child) {
+          return Container(
+              margin: EdgeInsets.only(top: catAnimation.value),
+              child: child // recreates the widget, cheap,
+              );
+        },
+        child: const Cat() // create cat one time, expensive so do it once,
+        );
   }
 }
