@@ -28,6 +28,11 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       begin: 0.0,
       end: pi,
     ).animate(CurvedAnimation(parent: boxController, curve: Curves.linear));
+    boxAnimation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        boxController.repeat();
+      }
+    });
     boxController.forward();
 
     catController = AnimationController(
