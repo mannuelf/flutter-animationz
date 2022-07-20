@@ -19,10 +19,10 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     // Life-cycle method
     super.initState();
 
-    catController =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    catAnimation = Tween(begin: -40.0, end: 200.0)
-        .animate(CurvedAnimation(parent: catController, curve: Curves.easeIn));
+    catController = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: this);
+    catAnimation = Tween(begin: -40.0, end: -80.0).animate(
+        CurvedAnimation(parent: catController, curve: Curves.easeInOutBack));
   }
 
   tapBox() {
@@ -50,8 +50,10 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              buildBox(),
               buildCatAnimation(),
+              buildBox(),
+              buildLeftFlap(),
+              buildRightFlap()
             ],
           ),
         ),
@@ -79,6 +81,22 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       height: 200.0,
       width: 200.0,
       color: Colors.brown.shade300,
+    );
+  }
+
+  Widget buildLeftFlap() {
+    return Container(
+      height: 10.0,
+      width: 125.0,
+      color: Colors.red,
+    );
+  }
+
+  Widget buildRightFlap() {
+    return Container(
+      height: 10.0,
+      width: 125.0,
+      color: Colors.red,
     );
   }
 }
