@@ -23,11 +23,12 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     super.initState();
 
     boxController =
-        AnimationController(duration: Duration(seconds: 2, vsync: this));
+        AnimationController(duration: const Duration(seconds: 2), vsync: this);
     boxAnimation = Tween(
       begin: 0.0,
       end: pi,
     ).animate(CurvedAnimation(parent: boxController, curve: Curves.linear));
+    boxController.forward();
 
     catController = AnimationController(
         duration: const Duration(milliseconds: 500), vsync: this);
