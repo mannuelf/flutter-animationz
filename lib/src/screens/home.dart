@@ -43,7 +43,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Animations ⛱')),
+      appBar: AppBar(title: const Text('⛱ Animations ⛱')),
       body: GestureDetector(
         onTap: tapBox,
         child: buildAnimation(),
