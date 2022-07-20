@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:animationz/src/widgets/cat.dart';
 import 'package:flutter/material.dart';
 
@@ -25,8 +26,8 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     boxController =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
     boxAnimation = Tween(
-      begin: 0.0,
-      end: pi,
+      begin: pi * 0.6,
+      end: pi * 0.65,
     ).animate(CurvedAnimation(parent: boxController, curve: Curves.linear));
     boxAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
