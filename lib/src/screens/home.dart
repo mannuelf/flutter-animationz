@@ -123,13 +123,21 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   Widget buildRightFlap() {
-    return Transform.rotate(
-        angle: pi * 0.6,
-        alignment: Alignment.topRight,
-        child: Container(
-          height: 5.0,
-          width: 125.0,
-          color: Colors.brown.shade300,
-        ));
+    return Positioned(
+        right: 4.0,
+        child: AnimatedBuilder(
+            animation: boxAnimation,
+            child: Container(
+              height: 5.0,
+              width: 125.0,
+              color: Colors.brown.shade300,
+            ),
+            builder: (context, child) {
+              return Transform.rotate(
+                angle: boxAnimation.value,
+                alignment: Alignment.topRight,
+                child: child,
+              );
+            }));
   }
 }
