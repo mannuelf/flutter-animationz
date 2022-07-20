@@ -28,7 +28,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     boxAnimation = Tween(
       begin: pi * 0.6,
       end: pi * 0.65,
-    ).animate(CurvedAnimation(parent: boxController, curve: Curves.linear));
+    ).animate(CurvedAnimation(parent: boxController, curve: Curves.easeInSine));
     boxAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         boxController.reverse();
@@ -49,9 +49,11 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     if (catController.status == AnimationStatus.completed) {
       // animation completed
       catController.reverse();
+      boxController.forward();
     } else if (catController.status == AnimationStatus.dismissed) {
       // animation stopped
       catController.forward();
+      boxController.stop();
     } else if (catController.status == AnimationStatus.forward) {
       catController.reverse();
     } else if (catController.status == AnimationStatus.reverse) {
