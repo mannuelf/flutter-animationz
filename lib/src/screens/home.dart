@@ -23,21 +23,23 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     // Life-cycle method
     super.initState();
 
-    boxController =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    boxController = AnimationController(
+        duration: const Duration(milliseconds: 300), vsync: this);
     boxAnimation = Tween(
       begin: pi * 0.6,
       end: pi * 0.65,
     ).animate(CurvedAnimation(parent: boxController, curve: Curves.linear));
     boxAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        boxController.repeat();
+        boxController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        boxController.forward();
       }
     });
     boxController.forward();
 
     catController = AnimationController(
-        duration: const Duration(milliseconds: 500), vsync: this);
+        duration: const Duration(milliseconds: 300), vsync: this);
     catAnimation = Tween(begin: -40.0, end: -80.0).animate(
         CurvedAnimation(parent: catController, curve: Curves.easeInOutBack));
   }
